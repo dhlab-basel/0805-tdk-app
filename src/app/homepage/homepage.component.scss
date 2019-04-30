@@ -1,0 +1,30 @@
+// desktop screen size: bigger than a tablet
+@media screen and (min-width: 768px) {
+    .mls-intro {
+        text-align: center;
+        width: 560px;
+    }
+
+    .mls-logo {
+        width: 300px;
+    }
+}
+
+// mobile device: tablet and smaller than a tablet
+@media screen and (max-width: 768px) {
+    .mls-intro {
+        text-align: center;
+    }
+    .mls-logo {
+        max-width: 100%;
+        max-height: auto;
+    }
+}
+
+.index {
+    margin-top: 72px;
+}
+
+.sub-index {
+    margin-top: 48px;
+}

@@ -1,0 +1,80 @@
+/**
+  import global style definition files
+ */
+ @import url('https://fonts.googleapis.com/css?family=Roboto');
+ @import 'config';
+
+ /**
+   additional global style definitions
+  */
+ body {
+   font-family: Roboto, Arial, sans-serif;
+   margin: 0;
+ }
+
+// desktop screen size: bigger than a tablet
+@media screen and (min-width: 768px) {
+  .app-content {
+    .container,
+    kui-search-results {
+        width: 640px;
+        margin: 54px auto 0 auto !important;
+        display: block;
+    }
+  }
+}
+
+// mobile device: tablet and smaller than a tablet
+@media screen and (max-width: 768px) {
+  .app-content {
+    .container,
+    kui-search-results {
+      margin: 0 auto 0 auto !important;
+      display: block;
+    }
+  }
+  .previousBtn {
+    display: none !important;
+  }
+}
+
+ .fill-remaining-space {
+   /* This fills the remaining space, by using flexbox.
+      Every toolbar row uses a flexbox row layout. */
+   flex: 1 1 auto;
+ }
+
+ .center {
+   margin: 0 auto;
+ }
+
+ // center an element
+.middle {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.app-link {
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(204,204,204,.5);
+  }
+}
+
+.link {
+  cursor: pointer;
+}
+
+.previousBtn {
+  color: $accent_700 !important;
+  margin: 0 auto 24px 0 !important;
+  justify-content: center;
+  position: fixed !important;
+}
+
+.kui-progress-indicator {
+    .bounce1, .bounce2, .bounce3 {
+        background-color: $primary_500 !important;
+    }
+}

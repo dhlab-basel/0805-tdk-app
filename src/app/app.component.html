@@ -1,0 +1,17 @@
+<mat-toolbar class="app-header">
+  <span class="logo">
+    <button mat-button routerLink="/">
+      <mat-icon svgIcon="mls-logo" class="large"></mat-icon>
+    </button>
+  </span>
+
+  <span class="center">
+    <!-- search panel: fulltext and extended search -->
+    <kui-fulltext-search [route]="'/search'"></kui-fulltext-search>
+  </span>
+
+</mat-toolbar>
+
+<div class="app-content">
+  <router-outlet></router-outlet>
+</div>

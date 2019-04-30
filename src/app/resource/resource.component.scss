@@ -1,0 +1,25 @@
+.hidden {
+  display: none;
+}
+
+// list of properties
+.property {
+  .property-value-item {
+    // padding-left: 12px;
+    min-height: 48px;
+    height: auto;
+
+    li {
+      list-style-type: none;
+
+      &.list:before {
+        content: '-    ';
+      }
+
+      &.lastItem {
+        margin-bottom: 12px;
+      }
+    }
+  }
+}
+
