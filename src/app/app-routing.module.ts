@@ -25,29 +25,18 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'lemmata',
+    path: 'lage',
     component: ResourcesListComponent
   },
   {
-    path: 'artikel',
+    path: 'kampagne',
     component: ResourcesListComponent
   },
   {
-    path: 'lexika',
+    path: 'bild',
     component: ResourcesListComponent
   },
-  {
-    path: 'bibliothek',
-    component: ResourcesListComponent
-  },
-  {
-    path: 'ort',
-    component: ResourcesListComponent
-  },
-  {
-    path: 'taetigkeit',
-    component: ResourcesListComponent
-  },
+
   {
     path: '**',
     component: ErrorComponent

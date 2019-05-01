@@ -73,7 +73,6 @@ export class TdkService {
             ?bild a knora-api:Resource .
             ?bild a tdk:Bild .
             ?bild knora-api:hasStillImageFileValue ?file .
-
          }
        `;
         // offset component of the Gravsearch query

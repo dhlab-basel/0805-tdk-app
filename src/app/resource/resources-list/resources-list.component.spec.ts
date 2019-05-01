@@ -11,7 +11,7 @@ describe('ResourcesListComponent', () => {
   let component: ResourcesListComponent;
   let fixture: ComponentFixture<ResourcesListComponent>;
 
-  const route = 'lemma';
+  const route = 'lage';
   const locationStub = {
     back: jasmine.createSpy('back')
   };
