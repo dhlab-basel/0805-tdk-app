@@ -7,7 +7,7 @@
   "externalApiURL": "http://0.0.0.0:3333",
   "iiifURL": "http://0.0.0.0:1024",
   "appURL": "http://0.0.0.0:4200",
-  "appName": "Musikalisches Lexikon der Schweiz",
+  "appName": "Tal der Könige",
   "localData": "data",
   "pagingLimit": 25,
   "startComponent": "dasch"

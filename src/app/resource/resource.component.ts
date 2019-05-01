@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 
 
 @Component({
-    selector: 'mls-resource',
+    selector: 'tdk-resource',
     templateUrl: './resource.component.html',
     styleUrls: ['./resource.component.scss']
 })

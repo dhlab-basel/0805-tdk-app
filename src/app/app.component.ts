@@ -3,7 +3,7 @@ import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'mls-root',
+  selector: 'tdk-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
@@ -15,8 +15,8 @@ export class AppComponent {
 
       // kuirl icon with text
       this._matIconRegistry.addSvgIcon(
-          'mls-logo',
-          this._domSanitizer.bypassSecurityTrustResourceUrl('/assets/images/mls-logo.svg')
+          'tdk-logo',
+          this._domSanitizer.bypassSecurityTrustResourceUrl('/assets/images/tdk-logo.svg')
       );
 
   }

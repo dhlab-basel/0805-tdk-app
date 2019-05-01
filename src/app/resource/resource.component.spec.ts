@@ -31,7 +31,7 @@ describe('ResourceComponent', () => {
   let component: ResourceComponent;
   let fixture: ComponentFixture<ResourceComponent>;
 
-  const iri = 'http%3A%2F%2Frdfh.ch%2F0801%2FJth8ORQUR0aTOpuNHaIUzA';
+  //const iri = 'http%3A%2F%2Frdfh.ch%2F0801%2FJth8ORQUR0aTOpuNHaIUzA';
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

@@ -5,7 +5,7 @@ import { SearchParamsService, ExtendedSearchParams } from '@knora/core';
 @Injectable({
     providedIn: 'root'
 })
-export class MlsService {
+export class TdkService {
 
     constructor(
         private _appInitService: AppInitService,

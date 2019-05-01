@@ -37,4 +37,4 @@ LABEL maintainer="ivan.subotic@unibas.ch"
 
 RUN rm -rf /public/*
 
-COPY --from=builder /usr/app/dist/musiklexikon /public
+COPY --from=builder /usr/app/dist/tdk /public

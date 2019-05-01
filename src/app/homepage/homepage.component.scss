@@ -1,21 +1,21 @@
 // desktop screen size: bigger than a tablet
 @media screen and (min-width: 768px) {
-    .mls-intro {
+    .tdk-intro {
         text-align: center;
         width: 560px;
     }
 
-    .mls-logo {
+    .tdk-logo {
         width: 300px;
     }
 }
 
 // mobile device: tablet and smaller than a tablet
 @media screen and (max-width: 768px) {
-    .mls-intro {
+    .tdk-intro {
         text-align: center;
     }
-    .mls-logo {
+    .tdk-logo {
         max-width: 100%;
         max-height: auto;
     }

@@ -7,7 +7,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "mls",
+      "prefix": "tdk",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/musiklexikon",
+            "outputPath": "dist/tdk",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "musiklexikon:build"
+            "browserTarget": "tdk:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "musiklexikon:build:production"
+              "browserTarget": "tdk:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "musiklexikon:build"
+            "browserTarget": "tdk:build"
           }
         },
         "test": {
@@ -121,11 +121,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "musiklexikon:serve"
+            "devServerTarget": "tdk:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "musiklexikon:serve:production"
+              "devServerTarget": "tdk:serve:production"
             }
           }
         },
@@ -141,5 +141,5 @@
       }
     }
   },
-  "defaultProject": "musiklexikon"
+  "defaultProject": "tdk"
 }
