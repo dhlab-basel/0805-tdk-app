@@ -1,0 +1,17 @@
+import * as tslib_1 from "tslib";
+import { JsonObject, JsonProperty } from 'json2typescript';
+import { ListInfo } from './list-info';
+let ListInfoResponse = class ListInfoResponse {
+    constructor() {
+        this.listinfo = undefined;
+    }
+};
+tslib_1.__decorate([
+    JsonProperty('listinfo', ListInfo, false),
+    tslib_1.__metadata("design:type", ListInfo)
+], ListInfoResponse.prototype, "listinfo", void 0);
+ListInfoResponse = tslib_1.__decorate([
+    JsonObject('ListInfoResponse')
+], ListInfoResponse);
+export { ListInfoResponse };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibGlzdC1pbmZvLXJlc3BvbnNlLmpzIiwic291cmNlUm9vdCI6Im5nOi8vQGtub3JhL2NvcmUvIiwic291cmNlcyI6WyJsaWIvZGVjbGFyYXRpb25zL2FwaS9hZG1pbi9saXN0cy9saXN0LWluZm8tcmVzcG9uc2UudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLE9BQU8sRUFBRSxVQUFVLEVBQUUsWUFBWSxFQUFFLE1BQU0saUJBQWlCLENBQUM7QUFDM0QsT0FBTyxFQUFFLFFBQVEsRUFBRSxNQUFNLGFBQWEsQ0FBQztJQUcxQixnQkFBZ0IsU0FBaEIsZ0JBQWdCO0lBRDdCO1FBSVcsYUFBUSxHQUFhLFNBQVMsQ0FBQztJQUMxQyxDQUFDO0NBQUEsQ0FBQTtBQURHO0lBREMsWUFBWSxDQUFDLFVBQVUsRUFBRSxRQUFRLEVBQUUsS0FBSyxDQUFDO3NDQUN6QixRQUFRO2tEQUFhO0FBSDdCLGdCQUFnQjtJQUQ1QixVQUFVLENBQUMsa0JBQWtCLENBQUM7R0FDbEIsZ0JBQWdCLENBSTVCO1NBSlksZ0JBQWdCIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgSnNvbk9iamVjdCwgSnNvblByb3BlcnR5IH0gZnJvbSAnanNvbjJ0eXBlc2NyaXB0JztcbmltcG9ydCB7IExpc3RJbmZvIH0gZnJvbSAnLi9saXN0LWluZm8nO1xuXG5ASnNvbk9iamVjdCgnTGlzdEluZm9SZXNwb25zZScpXG5leHBvcnQgY2xhc3MgTGlzdEluZm9SZXNwb25zZSB7XG5cbiAgICBASnNvblByb3BlcnR5KCdsaXN0aW5mbycsIExpc3RJbmZvLCBmYWxzZSlcbiAgICBwdWJsaWMgbGlzdGluZm86IExpc3RJbmZvID0gdW5kZWZpbmVkO1xufVxuXG5cbiJdfQ==

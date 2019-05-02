@@ -1,0 +1,12 @@
+/*
+ * Public API Surface of viewer
+ */
+// resource viewer
+export * from './lib/resource/';
+// property (gui) element
+export * from './lib/property/';
+// different kind of views
+export * from './lib/view/';
+// viewer module
+export * from './lib/viewer.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljX2FwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL0Brbm9yYS92aWV3ZXIvIiwic291cmNlcyI6WyJwdWJsaWNfYXBpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztHQUVHO0FBRUgsa0JBQWtCO0FBQ2xCLGNBQWMsaUJBQWlCLENBQUM7QUFFaEMseUJBQXlCO0FBQ3pCLGNBQWMsaUJBQWlCLENBQUM7QUFFaEMsMEJBQTBCO0FBQzFCLGNBQWMsYUFBYSxDQUFDO0FBRTVCLGdCQUFnQjtBQUNoQixjQUFjLHFCQUFxQixDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiLypcbiAqIFB1YmxpYyBBUEkgU3VyZmFjZSBvZiB2aWV3ZXJcbiAqL1xuXG4vLyByZXNvdXJjZSB2aWV3ZXJcbmV4cG9ydCAqIGZyb20gJy4vbGliL3Jlc291cmNlLyc7XG5cbi8vIHByb3BlcnR5IChndWkpIGVsZW1lbnRcbmV4cG9ydCAqIGZyb20gJy4vbGliL3Byb3BlcnR5Lyc7XG5cbi8vIGRpZmZlcmVudCBraW5kIG9mIHZpZXdzXG5leHBvcnQgKiBmcm9tICcuL2xpYi92aWV3Lyc7XG5cbi8vIHZpZXdlciBtb2R1bGVcbmV4cG9ydCAqIGZyb20gJy4vbGliL3ZpZXdlci5tb2R1bGUnO1xuIl19

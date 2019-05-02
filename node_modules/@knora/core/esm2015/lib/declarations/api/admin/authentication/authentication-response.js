@@ -1,0 +1,16 @@
+import * as tslib_1 from "tslib";
+import { JsonObject, JsonProperty } from 'json2typescript';
+let AuthenticationResponse = class AuthenticationResponse {
+    constructor() {
+        this.token = undefined;
+    }
+};
+tslib_1.__decorate([
+    JsonProperty('token', String),
+    tslib_1.__metadata("design:type", String)
+], AuthenticationResponse.prototype, "token", void 0);
+AuthenticationResponse = tslib_1.__decorate([
+    JsonObject('AuthenticationResponse')
+], AuthenticationResponse);
+export { AuthenticationResponse };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXV0aGVudGljYXRpb24tcmVzcG9uc2UuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9Aa25vcmEvY29yZS8iLCJzb3VyY2VzIjpbImxpYi9kZWNsYXJhdGlvbnMvYXBpL2FkbWluL2F1dGhlbnRpY2F0aW9uL2F1dGhlbnRpY2F0aW9uLXJlc3BvbnNlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQSxPQUFPLEVBQUUsVUFBVSxFQUFFLFlBQVksRUFBRSxNQUFNLGlCQUFpQixDQUFDO0lBRzlDLHNCQUFzQixTQUF0QixzQkFBc0I7SUFEbkM7UUFJVyxVQUFLLEdBQVcsU0FBUyxDQUFDO0lBQ3JDLENBQUM7Q0FBQSxDQUFBO0FBREc7SUFEQyxZQUFZLENBQUMsT0FBTyxFQUFFLE1BQU0sQ0FBQzs7cURBQ0c7QUFIeEIsc0JBQXNCO0lBRGxDLFVBQVUsQ0FBQyx3QkFBd0IsQ0FBQztHQUN4QixzQkFBc0IsQ0FJbEM7U0FKWSxzQkFBc0IiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBKc29uT2JqZWN0LCBKc29uUHJvcGVydHkgfSBmcm9tICdqc29uMnR5cGVzY3JpcHQnO1xuXG5ASnNvbk9iamVjdCgnQXV0aGVudGljYXRpb25SZXNwb25zZScpXG5leHBvcnQgY2xhc3MgQXV0aGVudGljYXRpb25SZXNwb25zZSB7XG5cbiAgICBASnNvblByb3BlcnR5KCd0b2tlbicsIFN0cmluZylcbiAgICBwdWJsaWMgdG9rZW46IHN0cmluZyA9IHVuZGVmaW5lZDtcbn1cbiJdfQ==

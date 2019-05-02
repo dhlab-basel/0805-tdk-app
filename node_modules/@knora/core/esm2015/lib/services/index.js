@@ -1,0 +1,28 @@
+/**
+ * main api services
+ */
+export * from './api.service';
+/**
+ * specific services for knora admin api
+ */
+export * from './admin/groups.service';
+export * from './admin/lists.service';
+export * from './admin/projects.service';
+export * from './admin/users.service';
+export * from './admin/language.service';
+export * from './admin/status-msg.service';
+/**
+ * specific services for knora v2 api
+ */
+export * from './v2/ontology.service';
+export * from './v2/ontology-cache.service';
+export * from './v2/resource.service';
+export * from './v2/search.service';
+export * from './v2/convert-jsonld';
+export * from './v2/incoming.service';
+export * from './v2/search-params.service';
+export * from './v2/grav-search.service';
+export * from './v2/store.service';
+export * from './v2/basic-ontology.service';
+export * from './v2/resource-types.service';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290Ijoibmc6Ly9Aa25vcmEvY29yZS8iLCJzb3VyY2VzIjpbImxpYi9zZXJ2aWNlcy9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7R0FFRztBQUNILGNBQWMsZUFBZSxDQUFDO0FBRTlCOztHQUVHO0FBQ0gsY0FBYyx3QkFBd0IsQ0FBQztBQUN2QyxjQUFjLHVCQUF1QixDQUFDO0FBQ3RDLGNBQWMsMEJBQTBCLENBQUM7QUFDekMsY0FBYyx1QkFBdUIsQ0FBQztBQUN0QyxjQUFjLDBCQUEwQixDQUFDO0FBQ3pDLGNBQWMsNEJBQTRCLENBQUM7QUFFM0M7O0dBRUc7QUFDSCxjQUFjLHVCQUF1QixDQUFDO0FBQ3RDLGNBQWMsNkJBQTZCLENBQUM7QUFDNUMsY0FBYyx1QkFBdUIsQ0FBQztBQUN0QyxjQUFjLHFCQUFxQixDQUFDO0FBQ3BDLGNBQWMscUJBQXFCLENBQUM7QUFDcEMsY0FBYyx1QkFBdUIsQ0FBQztBQUN0QyxjQUFjLDRCQUE0QixDQUFDO0FBQzNDLGNBQWMsMEJBQTBCLENBQUM7QUFDekMsY0FBYyxvQkFBb0IsQ0FBQztBQUNuQyxjQUFjLDZCQUE2QixDQUFDO0FBQzVDLGNBQWMsNkJBQTZCLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIG1haW4gYXBpIHNlcnZpY2VzXG4gKi9cbmV4cG9ydCAqIGZyb20gJy4vYXBpLnNlcnZpY2UnO1xuXG4vKipcbiAqIHNwZWNpZmljIHNlcnZpY2VzIGZvciBrbm9yYSBhZG1pbiBhcGlcbiAqL1xuZXhwb3J0ICogZnJvbSAnLi9hZG1pbi9ncm91cHMuc2VydmljZSc7XG5leHBvcnQgKiBmcm9tICcuL2FkbWluL2xpc3RzLnNlcnZpY2UnO1xuZXhwb3J0ICogZnJvbSAnLi9hZG1pbi9wcm9qZWN0cy5zZXJ2aWNlJztcbmV4cG9ydCAqIGZyb20gJy4vYWRtaW4vdXNlcnMuc2VydmljZSc7XG5leHBvcnQgKiBmcm9tICcuL2FkbWluL2xhbmd1YWdlLnNlcnZpY2UnO1xuZXhwb3J0ICogZnJvbSAnLi9hZG1pbi9zdGF0dXMtbXNnLnNlcnZpY2UnO1xuXG4vKipcbiAqIHNwZWNpZmljIHNlcnZpY2VzIGZvciBrbm9yYSB2MiBhcGlcbiAqL1xuZXhwb3J0ICogZnJvbSAnLi92Mi9vbnRvbG9neS5zZXJ2aWNlJztcbmV4cG9ydCAqIGZyb20gJy4vdjIvb250b2xvZ3ktY2FjaGUuc2VydmljZSc7XG5leHBvcnQgKiBmcm9tICcuL3YyL3Jlc291cmNlLnNlcnZpY2UnO1xuZXhwb3J0ICogZnJvbSAnLi92Mi9zZWFyY2guc2VydmljZSc7XG5leHBvcnQgKiBmcm9tICcuL3YyL2NvbnZlcnQtanNvbmxkJztcbmV4cG9ydCAqIGZyb20gJy4vdjIvaW5jb21pbmcuc2VydmljZSc7XG5leHBvcnQgKiBmcm9tICcuL3YyL3NlYXJjaC1wYXJhbXMuc2VydmljZSc7XG5leHBvcnQgKiBmcm9tICcuL3YyL2dyYXYtc2VhcmNoLnNlcnZpY2UnO1xuZXhwb3J0ICogZnJvbSAnLi92Mi9zdG9yZS5zZXJ2aWNlJztcbmV4cG9ydCAqIGZyb20gJy4vdjIvYmFzaWMtb250b2xvZ3kuc2VydmljZSc7XG5leHBvcnQgKiBmcm9tICcuL3YyL3Jlc291cmNlLXR5cGVzLnNlcnZpY2UnO1xuIl19

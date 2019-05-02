@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "musiklexikon": {
+    "tdk": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
