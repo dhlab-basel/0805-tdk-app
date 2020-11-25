@@ -1,0 +1,74 @@
+<div class = "all">
+  <div class="container">
+    <div class="subcontainer">
+      <div class="form">
+        <mat-form-field>
+          <mat-select [(ngModel)]="selectedResourceType" placeholder="Resource type" (selectionChange)="deleteAllProps();">
+            <mat-option *ngFor="let c of classes" value= "{{c.id}}">{{c.label}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngFor="let chosenProp of propertiesChosen; let no = index">
+          <ng-container *ngTemplateOutlet="prop; context: {type: selectedResourceType, id: no, level: 0};">
+          </ng-container>
+          <a mat-button (click)="removeProperty(no);"> X </a>
+        </div>
+        <a class="button" mat-button (click)="addProperty()">Add Property</a>
+      </div>
+      <div class="textfields">
+        <textarea readonly cdkTextareaAutosize cdkAutosizeMinRows="10" cdkAutosizeMaxRows="10" matInput value = "{{formQueryString}}"></textarea>
+        <textarea #gravField cdkTextareaAutosize cdkAutosizeMinRows="10" cdkAutosizeMaxRows="10" matInput ></textarea>
+      </div>
+    </div>
+    <a class="searchbutton" mat-button (click)="createGravfieldQuery(gravField.value);">Search</a>
+  </div>
+</div>
+<ng-template #prop let-type="type" let-id="id" let-level="level">
+  <mat-form-field>
+    <mat-select #propfield [value]="propertiesChosen[id][level] === undefined ? '' : propertiesChosen[id][level].data" (selectionChange)="changeProp(id, level, propfield.value);">
+      <mat-option *ngFor="let property of getPropsOfResclass(type)" [value]="property.propertyIndex">{{property.propertyIndex.substring(property.propertyIndex.lastIndexOf('#') + 1, property.propertyIndex.length)}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select #operatorfield [value] = "propertiesChosen[id][level] === undefined ? '' : propertiesChosen[id][level].operator" (selectionChange)="setOperator(id, level, operatorfield.value);">
+      <mat-option value = "exists">Exists</mat-option>
+      <mat-option value = "equals">Equals</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div *ngIf="operatorfield.value === 'equals'" class="value-field">
+    <div [ngSwitch]="getTypeOfProp(propfield.value)" class="value-field">
+      <mat-form-field  *ngSwitchCase="'TextValue'">
+        <textarea #textfield matInput [value]="propertiesChosen[id][level].value === undefined ? '' : propertiesChosen[id][level].value" (keyup)="changeValue(id, level, textfield.value);"></textarea>
+      </mat-form-field>
+      <mat-form-field *ngSwitchCase="'IntValue'">
+        <input #intfield type="number" matInput [value]="propertiesChosen[id][level].value === undefined ? '' : propertiesChosen[id][level].value" (keyup)="changeValue(id, level, intfield.toString())">
+      </mat-form-field>
+      <mat-form-field *ngSwitchCase="'ListValue'">
+        <mat-select #listfield [value]="propertiesChosen[id][level].value === undefined ? '' : propertiesChosen[id][level].value" (selectionChange)="changeValue(id, level, listfield.value);">
+          <mat-option *ngFor="let node of lists[propfield.value].children" [value]="node.id">{{node.label}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngSwitchCase="'DateValue'">
+        <mat-form-field>
+          <mat-select #dateDepth [value]="propertiesChosen[id][level].value === undefined ? '': parseBackIsItYear(propertiesChosen[id][level].value)" >
+            <mat-option value = 'year'>Year</mat-option>
+            <mat-option value = 'month'>Month</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field *ngIf="dateDepth.value === 'year'">
+          <input matInput [matDatepicker]="yearDatepicker" (dateInput) = "dateValueChange(id, level, true, $event);" [value]="propertiesChosen[id][level].value === undefined ? undefined: parseBackDateStr(propertiesChosen[id][level].value)">
+          <mat-datepicker-toggle matSuffix [for]="yearDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #yearDatepicker (yearSelected)="dateSelected(yearDatepicker, $event)" startView="multi-year"></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field *ngIf="dateDepth.value === 'month'">
+          <input matInput [matDatepicker]="monthDatepicker" (dateInput) = "dateValueChange(id, level, false, $event);" [value]="propertiesChosen[id][level].value === undefined ? undefined: parseBackDateStr(propertiesChosen[id][level].value)">
+          <mat-datepicker-toggle matSuffix [for]="monthDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #monthDatepicker (monthSelected)="dateSelected(monthDatepicker, $event)" startView="multi-year"></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <ng-container *ngSwitchDefault>
+        <ng-container *ngTemplateOutlet="prop; context: {type: getObjectOfProp(propfield.value), id: id, level: level + 1}">
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>

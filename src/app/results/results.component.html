@@ -1,0 +1,4 @@
+<a mat-button (click)="router.navigateByUrl('search/')">Return to Search</a>
+<div *ngIf ="currentQuery">
+  <dsp-list-view [search]="currentQuery" (resourceSelected)="openResource($event)"></dsp-list-view>
+</div>
