@@ -1,7 +1,7 @@
 ### STAGE 1: Build ###
 
 # We label our stage as 'builder'
-FROM node:11-stretch as builder
+FROM node:12-stretch as builder
 
 LABEL maintainer="ivan.subotic@unibas.ch"
 
@@ -37,4 +37,4 @@ LABEL maintainer="ivan.subotic@unibas.ch"
 
 RUN rm -rf /public/*
 
-COPY --from=builder /usr/app/dist/tdk /public
+COPY --from=builder /usr/app/dist/tdk-app /public
