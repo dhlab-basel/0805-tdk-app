@@ -1,8 +1,0 @@
-/*
- * Public API Surface of core
- */
-export * from './lib/core.module';
-export * from './lib/declarations/';
-export * from './lib/declarations/api/operators';
-export * from './lib/services/';
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljX2FwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL0Brbm9yYS9jb3JlLyIsInNvdXJjZXMiOlsicHVibGljX2FwaS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7R0FFRztBQUVILGNBQWMsbUJBQW1CLENBQUM7QUFDbEMsY0FBYyxxQkFBcUIsQ0FBQztBQUNwQyxjQUFjLGtDQUFrQyxDQUFDO0FBQ2pELGNBQWMsaUJBQWlCLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKlxuICogUHVibGljIEFQSSBTdXJmYWNlIG9mIGNvcmVcbiAqL1xuXG5leHBvcnQgKiBmcm9tICcuL2xpYi9jb3JlLm1vZHVsZSc7XG5leHBvcnQgKiBmcm9tICcuL2xpYi9kZWNsYXJhdGlvbnMvJztcbmV4cG9ydCAqIGZyb20gJy4vbGliL2RlY2xhcmF0aW9ucy9hcGkvb3BlcmF0b3JzJztcbmV4cG9ydCAqIGZyb20gJy4vbGliL3NlcnZpY2VzLyc7XG4iXX0=
