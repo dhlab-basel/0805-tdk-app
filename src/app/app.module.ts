@@ -14,7 +14,6 @@ import {
 } from '@dasch-swiss/dsp-ui';
 import {environment} from '../environments/environment';
 import {KnoraApiConnection} from '@dasch-swiss/dsp-js';
-import { PlaygroundComponent } from './playground/playground.component';
 import { SearchComponent } from './search/search.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
@@ -26,14 +25,16 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatButtonModule} from '@angular/material/button';
 import { ResourceComponent } from './resource/resource.component';
 import { ResultsComponent } from './results/results.component';
+import { SimpleSearchComponent } from './simple-search/simple-search.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PlaygroundComponent,
     SearchComponent,
     ResourceComponent,
-    ResultsComponent
+    ResultsComponent,
+    SimpleSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +51,8 @@ import { ResultsComponent } from './results/results.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatToolbarModule
   ],
   providers: [
     {

@@ -1,0 +1,61 @@
+<h3>Objektkategorie</h3>
+<div *ngIf="objectList">
+    <mat-form-field>
+        <mat-select #objectField>
+            <mat-option *ngFor="let node of objectList.children" [value]="node.id">{{node.label}} </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <a class="button" mat-button (click)="objectSearch(objectField.value)">Suchen</a>
+</div>
+<h3>Katalognummer</h3>
+<mat-form-field >
+    <textarea #catalogField matInput ></textarea>
+</mat-form-field>
+<a class="button" mat-button (click)="catalogSearch(catalogField.value)">Suchen</a>
+<h3>Abbildungsnummer</h3>
+<mat-form-field >
+    <textarea #figureField matInput ></textarea>
+</mat-form-field>
+<a class="button" mat-button (click)="figureSearch(figureField.value)">Suchen</a>
+<h3>Fundnummer</h3>
+<mat-form-field >
+    <textarea #findField matInput ></textarea>
+</mat-form-field>
+<a class="button" mat-button (click)="findSearch(findField.value)">Suchen</a>
+<h3>Studymaterialnummer</h3>
+<mat-form-field >
+    <textarea #smField matInput ></textarea>
+</mat-form-field>
+<a class="button" mat-button (click)="smSearch(smField.value)">Suchen</a>
+<h3>Gefässnummer</h3>
+<mat-form-field >
+    <textarea #potField matInput ></textarea>
+</mat-form-field>
+<a class="button" mat-button (click)="potSearch(potField.value)">Suchen</a>
+<h3>Lage</h3>
+<mat-form-field >
+    <textarea #locationGraveField matInput placeholder="Grab"></textarea>
+</mat-form-field>
+<mat-form-field >
+    <textarea #locationRoomField matInput placeholder="Raum"></textarea>
+</mat-form-field>
+<mat-form-field >
+    <textarea #locationSectionField matInput placeholder="Schnitt"></textarea>
+</mat-form-field>
+<a class="button" mat-button (click)="locationSearch(locationGraveField.value, locationRoomField.value, locationSectionField.value)">Suchen</a>
+<h3>Person</h3>
+<mat-form-field >
+    <textarea #personField matInput ></textarea>
+</mat-form-field>
+<a class="button" mat-button (click)="personSearch(personField.value)">Suchen</a>
+<br>
+<div *ngIf="noResults">
+    <h3>Keine passenden Resultate gefunden</h3>
+</div>
+<div *ngFor="let result of results">
+    <div *ngFor="let img of result.images">
+        <dsp-still-image [images]="[img.image]"></dsp-still-image>
+        <a class="button" mat-button (click)="openResource(img.iri)">Details</a>
+    </div>
+</div>
+<a class="button" mat-button *ngIf="moreToLoad()" (click)="loadMore()">Weitere Resultate</a>

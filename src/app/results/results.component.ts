@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SearchParams} from '@dasch-swiss/dsp-ui';
+import {StorageService} from '../storage.service';
 
 @Component({
   selector: 'app-results',
@@ -10,16 +11,13 @@ import {SearchParams} from '@dasch-swiss/dsp-ui';
 export class ResultsComponent implements OnInit {
   query: string;
   currentQuery: SearchParams;
-  constructor(private route: ActivatedRoute, public router: Router) { }
+  constructor(public router: Router, private storage: StorageService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.query = decodeURIComponent(params.query);
-      this.currentQuery = {
-        query: this.query,
-        mode: 'gravsearch'
-      };
-    });
+    this.currentQuery = {
+      query: this.storage.currentQuery,
+      mode: 'gravsearch'
+    };
   }
   openResource(iri: string) {
     const url: string = 'resource/' + encodeURIComponent(iri);

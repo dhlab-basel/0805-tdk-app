@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {PlaygroundComponent} from './playground/playground.component';
 import {SearchComponent} from './search/search.component';
 import {ResourceComponent} from './resource/resource.component';
 import {ResultsComponent} from './results/results.component';
+import {SimpleSearchComponent} from './simple-search/simple-search.component';
 
 
 const routes: Routes = [
@@ -12,8 +12,12 @@ const routes: Routes = [
     component: ResourceComponent
   },
   {
-    path: 'results/:query',
+    path: 'results',
     component: ResultsComponent
+  },
+  {
+    path: 'simple',
+    component: SimpleSearchComponent
   },
   {
     path: '**',

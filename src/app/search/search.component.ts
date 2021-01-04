@@ -53,24 +53,22 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.getOnto();
     if (this.storage.resChosen) {
       this.selectedResourceType = this.storage.resChosen;
-      this.createFormQuery();
     }
     if (this.storage.propertiesChosen) {
       this.propertiesChosen = this.storage.propertiesChosen;
-      this.createFormQuery();
     }
-    console.log(this.selectedResourceType);
+    // this.createFormQuery();
   }
 
   getOnto(): void {
     this.dspApiConnection.v2.onto.getOntology(this.ontoIri).subscribe(
       (r: ReadOntology) => {
-        console.log(r);
         for (const key in r.classes) {
           this.classes.push(r.classes[key] as ResourceClassDefinition);
         }
         this.properties = r.properties;
         this.getLists();
+        this.createFormQuery();
       }
     );
   }
@@ -90,6 +88,9 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   getPropsOfResclass(resClass: string): IHasProperty[] {
+    /*
+    TODO: change the return of this method to a ResourcePropertyDefinition so that we can use the property.label in html
+     */
     const toReturn: IHasProperty[] = [];
     for (const res of this.classes) {
       if (res.id === resClass) {
@@ -104,11 +105,17 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   getTypeOfProp(iri: string): string {
-    return this.properties[iri].objectType.substr(this.properties[iri].objectType.lastIndexOf('#') + 1);
+    if (iri in this.properties) {
+      return this.properties[iri].objectType.substr(this.properties[iri].objectType.lastIndexOf('#') + 1);
+    }
+    return '';
   }
 
   getObjectOfProp(iri: string): string {
-    return this.properties[iri].objectType;
+    if (iri in this.properties) {
+      return this.properties[iri].objectType;
+    }
+    return '';
   }
 
   changeProp(id: number, level: number, property: string) {
@@ -124,7 +131,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       this.propertiesChosen[id].push(new Property());
     }
     this.propertiesChosen[id][level].operator = operator;
-    console.log(this.propertiesChosen);
+    this.createFormQuery();
   }
 
   removeProperty(id: number) {
@@ -200,7 +207,6 @@ export class SearchComponent implements OnInit, OnDestroy {
           parentName = childName;
         } catch (e) {
           if (e instanceof TypeError) {
-            console.log('Missing prop found');
           } else {
             console.error(e);
           }
@@ -208,7 +214,7 @@ export class SearchComponent implements OnInit, OnDestroy {
         i++;
       }
       const lastProp: Property = propArr[propArr.length - 1];
-      if (lastProp.value) {
+      if (lastProp.value && lastProp.operator === 'equals') {
         query += this.getFilterString(lastProp);
       }
     }
@@ -233,7 +239,6 @@ export class SearchComponent implements OnInit, OnDestroy {
         return '?' + this.getPropName(prop) + 'knora-api:intValueAsInt ?' + this.getPropName(prop) + 'Int .\n' +
           'FILTER(?' + this.getPropName(prop) + ' == ' + prop.value + ') .\n';
       default:
-        console.log('Illegal value type: ' + this.getTypeOfProp(prop.data) + ' ' + prop.value);
     }
     return '';
   }
@@ -279,7 +284,8 @@ export class SearchComponent implements OnInit, OnDestroy {
       }
       queryString += '}';
     }
-    const url: string = 'results/' + encodeURIComponent(queryString);
+    const url: string = 'results';
+    this.storage.currentQuery = queryString;
     this.router.navigateByUrl(url).then(e => {
     });
   }

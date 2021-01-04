@@ -22,7 +22,6 @@ export class ResourceComponent implements OnInit {
     this.isStillImage = false;
     this.dspApiConnection.v2.res.getResource(this.iri).subscribe(
       (res: ReadResource) => {
-        console.log(res);
         if ('http://api.knora.org/ontology/knora-api/v2#hasStillImageFileValue' in res.properties) {
           this.isStillImage = true;
         }

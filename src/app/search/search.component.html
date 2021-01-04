@@ -40,13 +40,15 @@
         <textarea #textfield matInput [value]="propertiesChosen[id][level].value === undefined ? '' : propertiesChosen[id][level].value" (keyup)="changeValue(id, level, textfield.value);"></textarea>
       </mat-form-field>
       <mat-form-field *ngSwitchCase="'IntValue'">
-        <input #intfield type="number" matInput [value]="propertiesChosen[id][level].value === undefined ? '' : propertiesChosen[id][level].value" (keyup)="changeValue(id, level, intfield.toString())">
+        <textarea #textfield matInput [value]="propertiesChosen[id][level].value === undefined ? '' : propertiesChosen[id][level].value" (keyup)="changeValue(id, level, textfield.value);"></textarea>
       </mat-form-field>
-      <mat-form-field *ngSwitchCase="'ListValue'">
+      <div class='inline-div' *ngSwitchCase="'ListValue'">
+      <mat-form-field *ngIf="lists[propfield.value]">
         <mat-select #listfield [value]="propertiesChosen[id][level].value === undefined ? '' : propertiesChosen[id][level].value" (selectionChange)="changeValue(id, level, listfield.value);">
           <mat-option *ngFor="let node of lists[propfield.value].children" [value]="node.id">{{node.label}}</mat-option>
         </mat-select>
       </mat-form-field>
+      </div>
       <div *ngSwitchCase="'DateValue'">
         <mat-form-field>
           <mat-select #dateDepth [value]="propertiesChosen[id][level].value === undefined ? '': parseBackIsItYear(propertiesChosen[id][level].value)" >

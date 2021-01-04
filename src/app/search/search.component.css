@@ -32,3 +32,6 @@ textarea {
   background-color: beige;
   margin:0 auto;
 }
+.inline-div {
+  display: inline-block;
+}
