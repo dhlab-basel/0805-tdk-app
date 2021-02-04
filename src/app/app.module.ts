@@ -12,6 +12,7 @@ import {
   DspSearchModule,
   DspViewerModule
 } from '@dasch-swiss/dsp-ui';
+import {LeafletModule} from '@asymmetrik/ngx-leaflet';
 import {environment} from '../environments/environment';
 import {KnoraApiConnection} from '@dasch-swiss/dsp-js';
 import { SearchComponent } from './search/search.component';
@@ -27,6 +28,7 @@ import { ResourceComponent } from './resource/resource.component';
 import { ResultsComponent } from './results/results.component';
 import { SimpleSearchComponent } from './simple-search/simple-search.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { PlaygroundComponent } from './playground/playground.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     SearchComponent,
     ResourceComponent,
     ResultsComponent,
-    SimpleSearchComponent
+    SimpleSearchComponent,
+    PlaygroundComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatNativeDateModule,
     MatButtonModule,
     ReactiveFormsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    LeafletModule
   ],
   providers: [
     {

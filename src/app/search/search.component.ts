@@ -40,7 +40,7 @@ class Property {
 export class SearchComponent implements OnInit, OnDestroy {
   public classes: ResourceClassDefinition[] = [];
   public selectedResourceType: string = '';
-  public ontoIri: string = 'http://api.tdk.test.dasch.swiss/ontology/0805/tdk_onto/v2';
+  public ontoIri: string = 'http://api.0805-test-server.dasch.swiss/ontology/0805/tdk_onto/v2';
   public propertiesChosen: Property[][] = [[new Property()]];
   public properties = {};
   public lists = {};
@@ -63,6 +63,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   getOnto(): void {
     this.dspApiConnection.v2.onto.getOntology(this.ontoIri).subscribe(
       (r: ReadOntology) => {
+        console.log(r);
         for (const key in r.classes) {
           this.classes.push(r.classes[key] as ResourceClassDefinition);
         }

@@ -1,6 +1,6 @@
 {
   "apiProtocol": "https",
-  "apiHost": "api.tdk.test.dasch.swiss",
+  "apiHost": "api.0805-test-server.dasch.swiss",
   "apiPort": 443,
   "apiPath": "",
   "jsonWebToken": "",

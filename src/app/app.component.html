@@ -1,6 +1,11 @@
 <mat-toolbar>
     <span class="fill-remaining-space"></span>
-    <a mat-button routerLink="search">Search</a>
-    <a mat-button routerLink="simple">Simple Search</a>
+    <a mat-button routerLink="search">{{storage.selectedLanguage == 0 ? 'Search' : 'Suche'}}</a>
+    <a mat-button routerLink="simple">{{storage.selectedLanguage == 0 ? 'Simple Search' : 'Einfache Suche'}}</a>
+    <mat-form-field>
+      <mat-select #langField [(value)]="storage.selectedLanguage">
+        <mat-option *ngFor="let lang of keys" [value]="lang">{{languages[lang]}}</mat-option>
+      </mat-select>
+    </mat-form-field>
 </mat-toolbar>
 <router-outlet></router-outlet>

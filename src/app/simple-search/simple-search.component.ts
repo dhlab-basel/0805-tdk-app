@@ -1,15 +1,17 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {DspApiConnectionToken, StillImageRepresentation} from '@dasch-swiss/dsp-ui';
 import {
-    KnoraApiConnection,
-    List,
-    ListNodeV2,
-    ReadOntology,
-    ReadResourceSequence, ReadStillImageFileValue,
-    ResourceClassDefinition,
-    ResourcePropertyDefinition
+  ApiResponseData,
+  KnoraApiConnection,
+  ListResponse,
+  ReadOntology,
+  ReadResourceSequence,
+  ReadStillImageFileValue,
+  ResourcePropertyDefinition
 } from '@dasch-swiss/dsp-js';
 import {Router} from '@angular/router';
+import {Languages, StorageService} from "../storage.service";
+
 class StillImageWithIri {
     image: StillImageRepresentation;
     iri: string;
@@ -29,18 +31,44 @@ class StillImageWithIriSequence {
         this.query = query;
     }
 }
+class Node {
+  labels: any[];
+  id: string;
+  constructor(labels: any[], id: string) {
+    this.labels = labels;
+    this.id = id;
+  }
+}
+export enum SearchOptions {
+  OBJECT_CATERGORY,
+  CATALOG_NUMBER,
+  ILLUSTRATION_NUMBER,
+  FIND_NUMBER,
+  STUDY_MATERIAL_NUMBER,
+  VESSEL_NUMBER,
+  LOCATION,
+  PERSON
+}
 @Component({
     selector: 'app-simple-search',
     templateUrl: './simple-search.component.html',
     styleUrls: ['./simple-search.component.css']
 })
 export class SimpleSearchComponent implements OnInit {
-    public ontoIri = 'http://api.tdk.test.dasch.swiss/ontology/0805/tdk_onto/v2';
+    public ontoIri = 'http://api.0805-test-server.dasch.swiss/ontology/0805/tdk_onto/v2';
     public baseQuery = 'PREFIX knora-api: <http://api.knora.org/ontology/knora-api/v2#>\nPREFIX tdk: <' + this.ontoIri + '#>\nPREFIX knora-api-simple: <http://api.knora.org/ontology/knora-api/simple/v2#>\nCONSTRUCT {\n?mainres knora-api:isMainResource true .\n?mainres knora-api:hasStillImageFileValue ?stillImage .\n';
-    public objectList: ListNodeV2;
+    public objectList: Node[];
     public results: StillImageWithIriSequence[] = [];
     public noResults: boolean = false;
-    constructor(@Inject(DspApiConnectionToken) private dspApiConnection: KnoraApiConnection, private router: Router) {
+    public searchOptionsStrings = [{en: 'Object Category', de: 'Objektkategorie'},
+    {en: 'Catalog Number', de: 'Katalognummer'},
+    {en: 'Illustration Number', de: 'Abbildungsnummer'},
+    {en: 'Find number', de: 'Fundnummer'},
+    {en: 'Study Material Number', de: 'Study-Material-Nummer'},
+    {en: 'Vessel Number', de: 'Gefässnummer'},
+    {en: 'Location', de: 'Lage'},
+    {en: 'Person', de: 'Person'}];
+    constructor(@Inject(DspApiConnectionToken) private dspApiConnection: KnoraApiConnection, private router: Router, public storage: StorageService) {
     }
 
     ngOnInit(): void {
@@ -48,20 +76,39 @@ export class SimpleSearchComponent implements OnInit {
     }
 
     getObjectList(): void {
+        this.objectList = [];
         this.dspApiConnection.v2.onto.getOntology(this.ontoIri).subscribe(
             (r: ReadOntology) => {
                 for (const i in r.properties) {
                     const prop = r.properties[i] as ResourcePropertyDefinition;
                     if (prop.guiAttributes.length > 0 && prop.label === 'Object type') {
                         const listIri = prop.guiAttributes[0].split('=')[1].slice(1, -1);
-                        this.dspApiConnection.v2.list.getList(listIri).subscribe(
-                            (l) => {
-                                this.objectList = l as ListNodeV2;
-                            });
+
+                        this.dspApiConnection.admin.listsEndpoint.getList(listIri).subscribe(
+                        (l) => {
+                          l = l as ApiResponseData<ListResponse>;
+                          for (const node of l.response.response.list.children){
+                            this.objectList.push(new Node(node.labels, node.id));
+                          }
+                        }
+                      );
                     }
                 }
+                console.log(this.objectList);
             }
         );
+
+    }
+    getObjectLabel(node: Node){
+      for (const label of node.labels){
+        if (label.language === 'en' && this.storage.selectedLanguage === Languages.English) {
+          return label.value;
+        }
+        if (label.language === 'de' && this.storage.selectedLanguage === Languages.Deutsch) {
+          return label.value;
+        }
+      }
+      return '';
     }
     getFilter(value: string, tag: string): string {
         const re = /\*/gi;
@@ -78,6 +125,32 @@ export class SimpleSearchComponent implements OnInit {
         else {
             return  tag + ' knora-api:valueAsString "' + cleanVal + '" .';
         }
+    }
+    searchRequested(id: number, value: string){
+      switch (id){
+        case SearchOptions.OBJECT_CATERGORY:
+          this.objectSearch(value);
+          break;
+        case SearchOptions.CATALOG_NUMBER:
+          this.catalogSearch(value);
+          break;
+        case SearchOptions.ILLUSTRATION_NUMBER:
+          this.figureSearch(value);
+          break;
+        case SearchOptions.STUDY_MATERIAL_NUMBER:
+          this.smSearch(value);
+          break;
+        case SearchOptions.VESSEL_NUMBER:
+          this.potSearch(value);
+          break;
+        case SearchOptions.LOCATION:
+          break; // handled by map
+        case SearchOptions.PERSON:
+          this.personSearch(value);
+          break;
+        default:
+          break;
+      }
     }
 
     objectSearch(value: string): void {
@@ -171,6 +244,9 @@ export class SimpleSearchComponent implements OnInit {
 
     search(queries: string[]): void {
         this.results = [];
+        for (let query of queries) {
+          console.log(query);
+        }
         this.noResults = false;
         for (const query of queries) {
             this.dspApiConnection.v2.search.doExtendedSearch(query).subscribe((r) => {

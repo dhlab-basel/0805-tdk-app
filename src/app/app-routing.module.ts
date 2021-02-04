@@ -4,6 +4,7 @@ import {SearchComponent} from './search/search.component';
 import {ResourceComponent} from './resource/resource.component';
 import {ResultsComponent} from './results/results.component';
 import {SimpleSearchComponent} from './simple-search/simple-search.component';
+import {PlaygroundComponent} from "./playground/playground.component";
 
 
 const routes: Routes = [
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'simple',
     component: SimpleSearchComponent
+  },
+  {
+    path: 'playground',
+    component: PlaygroundComponent
   },
   {
     path: '**',
